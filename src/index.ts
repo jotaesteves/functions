@@ -5,15 +5,22 @@ import * as threeSumFns from "./three-sum";
 import * as minWindowSubstringFns from "./min-window-substring";
 import * as isSplittableFns from "./is-splitable";
 import * as majorityElementFns from "./majority-element";
+import * as firstLetterTwiceFns from "./first-letter-twice";
+import * as twoSumFns from "./two-sum";
 
 const ITERATIONS = 10000;
 type Metric = { name: string; time: number; result: unknown };
 
-function runFunction(fn: Function, input: unknown, iterations: number): { result: unknown; time: number } {
+function runFunction(
+  fn: Function,
+  input: unknown,
+  iterations: number,
+  p0?: unknown
+): { result: unknown; time: number } {
   let result: unknown = undefined;
   const start = performance.now();
   for (let i = 1; i <= iterations; i++) {
-    result = fn(input);
+    result = p0 !== undefined ? fn(input, p0) : fn(input);
   }
   const end = performance.now();
   return { result, time: end - start };
@@ -26,12 +33,12 @@ function printTopMetrics(metrics: Metric[], count: number, label: string) {
   });
 }
 
-function runTestSuite(suiteName: string, fns: Record<string, Function>, input: unknown) {
+function runTestSuite(suiteName: string, fns: Record<string, Function>, input: unknown, p0?: number) {
   const metrics: Metric[] = [];
   console.log(`\n--- Running suite: ${suiteName} ---`);
   for (const [fnName, fn] of Object.entries(fns)) {
     if (typeof fn !== "function") continue;
-    const { result, time } = runFunction(fn, input, ITERATIONS);
+    const { result, time } = runFunction(fn, input, ITERATIONS, p0);
     metrics.push({ name: fnName, time, result });
     console.log(`${fnName}(${JSON.stringify(input)}):`, result, `- Time: ${time.toFixed(2)}ms`);
   }
@@ -47,4 +54,6 @@ function runTestSuite(suiteName: string, fns: Record<string, Function>, input: u
 // runTestSuite("threeSumFns", threeSumFns, [-1, 0, 1, 2, -1, -4]);
 // runTestSuite("minWindowSubstringFns", minWindowSubstringFns, ["ADOBECODEBANC", "ABC"]);
 // runTestSuite("isSplittableFns", isSplittableFns, [1, 1, 2, 2, 3, 4]);
-runTestSuite("majorityElementFns", majorityElementFns, [2, 2, 1, 1, 1, 2, 2]);
+//runTestSuite("majorityElementFns", majorityElementFns, [2, 2, 1, 1, 1, 2, 2]);
+// runTestSuite("firstLetterTwiceFns", firstLetterTwiceFns, "abca");
+runTestSuite("twoSumFns", twoSumFns, [2, 7, 11, 15], 9);
