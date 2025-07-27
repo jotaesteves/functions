@@ -3,6 +3,8 @@ import * as longestSubstringFns from "./longest-substrings";
 import * as stringToAtoiFns from "./string-to-atoi";
 import * as threeSumFns from "./three-sum";
 import * as minWindowSubstringFns from "./min-window-substring";
+import * as isSplittableFns from "./is-splitable";
+import * as majorityElementFns from "./majority-element";
 
 const ITERATIONS = 10000;
 type Metric = { name: string; time: number; result: unknown };
@@ -11,11 +13,7 @@ function runFunction(fn: Function, input: unknown, iterations: number): { result
   let result: unknown = undefined;
   const start = performance.now();
   for (let i = 1; i <= iterations; i++) {
-    if (Array.isArray(input)) {
-      result = fn(...input);
-    } else {
-      result = fn(input);
-    }
+    result = fn(input);
   }
   const end = performance.now();
   return { result, time: end - start };
@@ -47,4 +45,6 @@ function runTestSuite(suiteName: string, fns: Record<string, Function>, input: u
 // runTestSuite("longestSubstringFns", longestSubstringFns, "abcabcbb");
 // runTestSuite("stringToAtoi", stringToAtoiFns, "   -42");
 // runTestSuite("threeSumFns", threeSumFns, [-1, 0, 1, 2, -1, -4]);
-runTestSuite("minWindowSubstringFns", minWindowSubstringFns, ["ADOBECODEBANC", "ABC"]);
+// runTestSuite("minWindowSubstringFns", minWindowSubstringFns, ["ADOBECODEBANC", "ABC"]);
+// runTestSuite("isSplittableFns", isSplittableFns, [1, 1, 2, 2, 3, 4]);
+runTestSuite("majorityElementFns", majorityElementFns, [2, 2, 1, 1, 1, 2, 2]);
