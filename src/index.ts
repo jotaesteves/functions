@@ -7,6 +7,7 @@ import * as isSplittableFns from "./is-splitable";
 import * as majorityElementFns from "./majority-element";
 import * as firstLetterTwiceFns from "./first-letter-twice";
 import * as twoSumFns from "./two-sum";
+import * as addBinaryFns from "./add-binary";
 
 const ITERATIONS = 10000;
 type Metric = { name: string; time: number; result: unknown };
@@ -15,7 +16,7 @@ function runFunction(
   fn: Function,
   input: unknown,
   iterations: number,
-  p0?: unknown
+  p0?: number | string
 ): { result: unknown; time: number } {
   let result: unknown = undefined;
   const start = performance.now();
@@ -33,7 +34,7 @@ function printTopMetrics(metrics: Metric[], count: number, label: string) {
   });
 }
 
-function runTestSuite(suiteName: string, fns: Record<string, Function>, input: unknown, p0?: number) {
+function runTestSuite(suiteName: string, fns: Record<string, Function>, input: unknown, p0?: number | string) {
   const metrics: Metric[] = [];
   console.log(`\n--- Running suite: ${suiteName} ---`);
   for (const [fnName, fn] of Object.entries(fns)) {
@@ -54,6 +55,7 @@ function runTestSuite(suiteName: string, fns: Record<string, Function>, input: u
 // runTestSuite("threeSumFns", threeSumFns, [-1, 0, 1, 2, -1, -4]);
 // runTestSuite("minWindowSubstringFns", minWindowSubstringFns, ["ADOBECODEBANC", "ABC"]);
 // runTestSuite("isSplittableFns", isSplittableFns, [1, 1, 2, 2, 3, 4]);
-//runTestSuite("majorityElementFns", majorityElementFns, [2, 2, 1, 1, 1, 2, 2]);
+// runTestSuite("majorityElementFns", majorityElementFns, [2, 2, 1, 1, 1, 2, 2]);
 // runTestSuite("firstLetterTwiceFns", firstLetterTwiceFns, "abca");
-runTestSuite("twoSumFns", twoSumFns, [2, 7, 11, 15], 9);
+// runTestSuite("twoSumFns", twoSumFns, [2, 7, 11, 15], 9);
+runTestSuite("addBinaryFns", addBinaryFns, "11", "1");
