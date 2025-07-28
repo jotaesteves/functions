@@ -49,13 +49,13 @@ function runTestSuite(suiteName: string, fns: Record<string, Function>, input: u
 }
 
 // Add your test suites here
-// runTestSuite("climbStepsFns", climbStepsFns, 200);
-// runTestSuite("longestSubstringFns", longestSubstringFns, "abcabcbb");
-// runTestSuite("stringToAtoi", stringToAtoiFns, "   -42");
-// runTestSuite("threeSumFns", threeSumFns, [-1, 0, 1, 2, -1, -4]);
-// runTestSuite("minWindowSubstringFns", minWindowSubstringFns, ["ADOBECODEBANC", "ABC"]);
-// runTestSuite("isSplittableFns", isSplittableFns, [1, 1, 2, 2, 3, 4]);
-// runTestSuite("majorityElementFns", majorityElementFns, [2, 2, 1, 1, 1, 2, 2]);
-// runTestSuite("firstLetterTwiceFns", firstLetterTwiceFns, "abca");
-// runTestSuite("twoSumFns", twoSumFns, [2, 7, 11, 15], 9);
+runTestSuite("climbStepsFns", climbStepsFns, 200);
+runTestSuite("longestSubstringFns", longestSubstringFns, "abcabcbb");
+runTestSuite("stringToAtoi", stringToAtoiFns, "   -42");
+runTestSuite("threeSumFns", threeSumFns, [-1, 0, 1, 2, -1, -4]);
+runTestSuite("minWindowSubstringFns", minWindowSubstringFns, "ADOBECODEBANC", "ABC");
+runTestSuite("isSplittableFns", isSplittableFns, [1, 1, 2, 2, 3, 4]);
+runTestSuite("majorityElementFns", majorityElementFns, [2, 2, 1, 1, 1, 2, 2]);
+runTestSuite("firstLetterTwiceFns", firstLetterTwiceFns, "abca");
+runTestSuite("twoSumFns", twoSumFns, [2, 7, 11, 15], 9);
 runTestSuite("addBinaryFns", addBinaryFns, "11", "1");

@@ -6,7 +6,7 @@
 */
 
 export function minWindowSubstring(s: string, t: string): string {
-  if (s.length === 0 || t.length === 0) return "";
+  if (typeof s !== "string" || typeof t !== "string" || s.length === 0 || t.length === 0) return "";
 
   const charCountT: { [key: string]: number } = {};
   for (const char of t) {
